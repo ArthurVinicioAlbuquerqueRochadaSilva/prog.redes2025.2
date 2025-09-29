@@ -9,7 +9,7 @@ print(f'O Endereço IPv4 é...........................: {strIP}\n')
 
 # Define a variável 'intCIDR' com o valor 24, que representa a quantidade 
 # de bits da máscara de sub-rede (CIDR)
-intCIDR = 24
+intCIDR = 22
 print(f'Valor CIDR (bits na máscara)................: /{intCIDR}\n')
 
 # Converte o endereço IP de string para um número inteiro, utilizando 
