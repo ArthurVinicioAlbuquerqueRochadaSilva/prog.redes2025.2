@@ -22,22 +22,19 @@ print('\nRecebendo Mensagens...\n\n')
 print('Pressione CRTL+C para sair...')
 
 try:
-
     while True:
         try:
         # Recebendo os dados do cliente
-        byteMensagem, tuplaCliente = sockServer.recvfrom(BUFFER_SIZE)
-
+            byteMensagem, tuplaCliente = sockServer.recvfrom(BUFFER_SIZE)
         except socket.timeout:
             continue
         else:
             strNomeHost = socket.gethostbyaddr(tuplaCliente[0])[0]
-
             limpo = strNomeHost.split('.')[0]
             # Imprimindo a mensagem recebida convertendo de bytes para string
-                print(f'{tuplaCliente}: {limpo} {byteMensagem.decode(CODE_PAGE)}')
-        except KeyboardInterrupt:
-            print('Aviso: saindo do servidor: foi pressionado CRTL + C')
-        finally:
-            sockServer.close()
-            print('Servidor Finalizado')    
+            print(f'{tuplaCliente}: {limpo} {byteMensagem.decode(CODE_PAGE)}')
+except KeyboardInterrupt:
+         print('Aviso: saindo do servidor: foi pressionado CRTL + C')
+finally:
+    sockServer.close()
+print('Servidor Finalizado')    
