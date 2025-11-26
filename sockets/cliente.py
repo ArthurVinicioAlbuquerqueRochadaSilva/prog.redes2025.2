@@ -2,8 +2,9 @@
 import socket
 
 # ----------------------------------------------------------------------
-HOST_IP_SERVER = '10.25.1.9' # Definindo o IP do servidor
+HOST_IP_SERVER = '10.24.14.208' # Definindo o IP do servidor
 HOST_PORT       = 50000                    # Definindo a porta
+BUFFER_SIZE     = 512
 CODE_PAGE       = 'utf-8'                  # Definindo a página de 
                                            # codificação de caracteres
 # ----------------------------------------------------------------------
@@ -25,6 +26,9 @@ while True:
 
    # Enviando a mensagem ao servidor      
    sockClient.sendto(bytesMensagem, (HOST_IP_SERVER, HOST_PORT))
-
+   #recebendo mensagem
+   bytesMensagemRetorno , tuplaOrigem = sockClient.recvfrom(BUFFER_SIZE)
+   strNomeHost = socket.gethostbyaddr(tuplaOrigem[0])[0].split('.')[0].upper()
+   print(f'{tuplaOrigem}: {strNomeHost}: {bytesMensagemRetorno.decode(CODE_PAGE)}')
 # Fechando o socket
 sockClient.close()

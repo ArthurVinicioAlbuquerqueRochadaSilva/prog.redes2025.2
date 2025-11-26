@@ -33,6 +33,8 @@ try:
             limpo = strNomeHost.split('.')[0]
             # Imprimindo a mensagem recebida convertendo de bytes para string
             print(f'{tuplaCliente}: {limpo} {byteMensagem.decode(CODE_PAGE)}')
+        StrMsgRetorno
+
 except KeyboardInterrupt:
          print('Aviso: saindo do servidor: foi pressionado CRTL + C')
 finally:
