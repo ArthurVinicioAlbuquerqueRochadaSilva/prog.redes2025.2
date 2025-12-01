@@ -6,7 +6,7 @@ HOST_PORT       = 50000           # Definindo a porta
 
 BUFFER_SIZE     = 512             # Tamanho do buffer
 CODE_PAGE       = 'utf-8'         # Definindo a página de 
-                                  # codificação de caracteres
+                                  # codificação de caracteres 
 # ----------------------------------------------------------------------
 
 
