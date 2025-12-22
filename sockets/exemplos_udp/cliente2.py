@@ -1,7 +1,7 @@
 # Importando a biblioteca SOCKET
 import socket
 
-import constantes
+import sockets.exemplos_udp.constantes as constantes
 
 # Criando o socket (socket.AF_INET -> IPV4 / socket.SOCK_DGRAM -> UDP)
 sockClient = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
