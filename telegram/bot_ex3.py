@@ -8,7 +8,9 @@ import os, sys, requests, platform
 
 from token_bot import *
 
-strURL = f'https://api.telegram.org/bot{API_TOKEN}'
+strURLBase        = f'https://api.telegram.org/bot{API_TOKEN}'
+strURLGetUpdates  = f'{strURLBase}/getUpdates'
+strURLSendMessage = f'{strURLBase}/sendMessage'
 
 # Limpa a tela
 os.system('cls' if platform.system() == 'Windows' else 'clear')
@@ -24,7 +26,7 @@ intIDUltimaMensagem = -1
 # Loop infinito -> Modo Passivo
 while True:
    # Obtém as mensagens
-   reqURL = requests.get(strURL + '/getUpdates')
+   reqURL = requests.get(strURLGetUpdates)
 
    # Verifica se a requisição não foi bem sucedida
    if not reqURL.status_code == 200:
@@ -46,6 +48,11 @@ while True:
    # Atualiza o ID da última mensagem
    intIDUltimaMensagem = intIDMensagemAtual
    
-   # Exibe as mensagens recebidas
-   print(f'{jsonRetorno}')
-   print('-'*100+'\n')
+   strMensagem = jsonRetorno["result"][-1]["message"]["text"]
+   print(f'Mensagem recebida {intIDUltimaMensagem}: {strMensagem}')
+   
+   # Envia a mensagem de retorno
+   intIDChat            = jsonRetorno["result"][-1]["message"]["chat"]["id"]
+   strMensagemDevolvida = f'Você enviou a mensagem:\n"{strMensagem.upper()}"'
+   dictRetorno          = {'chat_id':intIDChat, 'text':strMensagemDevolvida}
+   reqURL = requests.post(strURLSendMessage, data=dictRetorno) 

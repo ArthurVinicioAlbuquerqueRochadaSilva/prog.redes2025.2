@@ -34,7 +34,7 @@ while True:
    if reqURL.json()['result'] == []: continue
 
    # Converte a resposta para JSON
-   jsonRetorno = reqURL.json()
+   jsonRetorno = reqURL.text
 
    # Obtém o ID da última mensagem da Requisição
    intIDMensagemAtual = jsonRetorno["result"][-1]["message"]["message_id"]
@@ -47,5 +47,8 @@ while True:
    intIDUltimaMensagem = intIDMensagemAtual
    
    # Exibe as mensagens recebidas
-   print(f'{jsonRetorno}')
-   print('-'*100+'\n')
+   #print(f'{jsonRetorno}')
+   #print('-'*100+'\n')
+
+   # Como fazer para exibir apenas a última mensagem recebida ?????
+   
