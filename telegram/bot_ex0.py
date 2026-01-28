@@ -8,7 +8,7 @@ import os, sys, requests, platform
 
 from token_bot import *
 
-strURL = f'https://api.telegram.org/bot{API_TOKEN}'
+strURL = f'https://api.telegram.org/bo{API_TOKEN}'
 
 # Limpa a tela
 os.system('cls' if platform.system() == 'Windows' else 'clear')
